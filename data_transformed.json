@@ -1,0 +1,30 @@
+[
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john@example.com",
+      "phoneNumber": "6789005322",
+      "profilePhoto": "profile.jpg",
+      "referralCode": "ABCD1234",
+      "createdAt": "2024-02-24T10:00:00Z"
+    },
+    {
+        "id": 2,
+        "name": "Subiksha",
+        "email": "subi@example.com",
+        "phoneNumber": "7010587034",
+        "profilePhoto": "profile1.jpg",
+        "referralCode": "ABCD1235",
+        "createdAt": "2024-02-24T10:00:00Z"
+      },
+      {
+        "id": 3,
+        "name": "Jawahar",
+        "email": "jawahar@example.com",
+        "phoneNumber": "9442907157",
+        "profilePhoto": "profile2.jpg",
+        "referralCode": "ABCD1236",
+        "createdAt": "2024-02-24T10:00:00Z"
+      }
+  ]
+  
