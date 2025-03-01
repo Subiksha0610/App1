@@ -1,30 +1,57 @@
 [
-    {
-      "id": 1,
-      "name": "John Doe",
-      "email": "john@example.com",
-      "phoneNumber": "6789005322",
-      "profilePhoto": "profile.jpg",
-      "referralCode": "ABCD1234",
-      "createdAt": "2024-02-24T10:00:00Z"
-    },
-    {
-        "id": 2,
-        "name": "Subiksha",
-        "email": "subi@example.com",
-        "phoneNumber": "7010587034",
-        "profilePhoto": "profile1.jpg",
-        "referralCode": "ABCD1235",
-        "createdAt": "2024-02-24T10:00:00Z"
-      },
-      {
-        "id": 3,
-        "name": "Jawahar",
-        "email": "jawahar@example.com",
-        "phoneNumber": "9442907157",
-        "profilePhoto": "profile2.jpg",
-        "referralCode": "ABCD1236",
-        "createdAt": "2024-02-24T10:00:00Z"
-      }
-  ]
-  
+  {
+    "id": 1,
+    "name": "John Doe",
+    "email": "john@example.com",
+    "phoneNumber": "6789005322",
+    "profilePhoto": "profile.jpg",
+    "referralCode": "ABCD1234",
+    "createdAt": "2024-02-24T10:00:00Z"
+  },
+  {
+    "id": 3,
+    "name": "Jawahar",
+    "email": "jawahar@example.com",
+    "phoneNumber": "9442907157",
+    "profilePhoto": "profile2.jpg",
+    "referralCode": "ABCD1236",
+    "createdAt": "2024-02-24T10:00:00Z"
+  },
+  {
+    "id": 2,
+    "name": "subi Doe",
+    "email": "subi@example.com",
+    "phoneNumber": "1234567890",
+    "profilePhoto": "profile3.jpg",
+    "referralCode": "ABCD1237",
+    "createdAt": "2024-02-24T10:00:00Z"
+  },
+  {
+    "id": 4,
+    "name": "Joh",
+    "email": "joh@example.com",
+    "phoneNumber": "7010587034",
+    "profilePhoto": "profile6.jpg",
+    "referralCode": "ABCD1238",
+    "createdAt": "2024-02-24T10:00:00Z"
+  },
+  {
+    "id": 5,
+    "name": "harini",
+    "email": "harini@example.com",
+    "phoneNumber": "7339032596",
+    "profilePhoto": "profile7.jpg",
+    "referralCode": "ABCD1231",
+    "createdAt": "2024-02-24T10:00:00Z"
+  },
+  {
+    "id": 6,
+    "name": "dhiya",
+    "email": "dhiyakala@example.com",
+    "phoneNumber": "9443808506",
+    "profilePhoto": "profile8.jpg",
+    "referralCode": "ABCD1236",
+    "createdAt": "2025-03-01T14:49:37.612Z",
+    "updatedAt": "2025-03-01T14:53:53.781Z"
+  }
+]
