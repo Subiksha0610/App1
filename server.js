@@ -49,11 +49,41 @@ const writeJsonFile = (data) => {
     fs.writeFileSync(dataFilePath, JSON.stringify(data, null, 2));
 };
 
-// ✅ Fetch All Users from JSON
-app.get('/api/data', (req, res) => {
-    const data = readJsonFile();
-    res.json(data);
+app.get('/api/users', async (req, res) => {
+    try {
+        const users = await User.find();
+        res.json(users);
+    } catch (error) {
+        res.status(500).json({ error: "Server Error" });
+    }
 });
+
+// ✅ Fetch User by Phone Number
+app.get('/api/user/:mobile', async (req, res) => {
+    try {
+        const user = await User.findOne({ mobile: req.params.mobile });
+        if (!user) {
+            return res.status(404).json({ error: "User Not Found" });
+        }
+        res.json(user);
+    } catch (error) {
+        res.status(500).json({ error: "Server Error" });
+    }
+});
+
+// ✅ Delete User by Phone Number
+app.delete('/api/user/:mobile', async (req, res) => {
+    try {
+        const user = await User.findOneAndDelete({ mobile: req.params.mobile });
+        if (!user) {
+            return res.status(404).json({ error: "User Not Found" });
+        }
+        res.json({ message: "User Deleted Successfully" });
+    } catch (error) {
+        res.status(500).json({ error: "Server Error" });
+    }
+});
+
 
 // ✅ Add New Data to JSON
 app.post('/api/data', (req, res) => {
@@ -73,16 +103,6 @@ app.put('/api/data/:id', (req, res) => {
     writeJsonFile(data);
     res.json({ message: "Data updated successfully" });
 });
-
-// ✅ Delete Data from JSON
-app.delete('/api/data/:id', (req, res) => {
-    let data = readJsonFile();
-    const { id } = req.params;
-    data = data.filter(item => item.id !== id);
-    writeJsonFile(data);
-    res.json({ message: "Data deleted successfully" });
-});
-
 // ✅ Mount Routes
 app.use("/api", userRoutes);
 app.use("/api", userDeleteRoutes);
