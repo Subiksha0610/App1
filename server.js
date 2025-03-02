@@ -2,8 +2,6 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const fs = require("fs");
-const path = require("path");
 const dotenv = require("dotenv");
 
 // Import Routes
@@ -31,78 +29,6 @@ const User = mongoose.model("User", new mongoose.Schema({
     email: String,
     mobile: String
 }));
-
-// ✅ JSON File Path
-const dataFilePath = path.join(__dirname, "data_transformed.json");
-
-// ✅ Read JSON Data
-const readJsonFile = () => {
-    if (fs.existsSync(dataFilePath)) {
-        const data = fs.readFileSync(dataFilePath);
-        return JSON.parse(data);
-    }
-    return [];
-};
-
-// ✅ Write JSON Data
-const writeJsonFile = (data) => {
-    fs.writeFileSync(dataFilePath, JSON.stringify(data, null, 2));
-};
-
-app.get('/api/users', async (req, res) => {
-    try {
-        const users = await User.find();
-        res.json(users);
-    } catch (error) {
-        res.status(500).json({ error: "Server Error" });
-    }
-});
-
-// ✅ Fetch User by Phone Number
-app.get('/api/user/:mobile', async (req, res) => {
-    try {
-        const user = await User.findOne({ mobile: req.params.mobile });
-        if (!user) {
-            return res.status(404).json({ error: "User Not Found" });
-        }
-        res.json(user);
-    } catch (error) {
-        res.status(500).json({ error: "Server Error" });
-    }
-});
-
-// ✅ Delete User by Phone Number
-app.delete('/api/user/:mobile', async (req, res) => {
-    try {
-        const user = await User.findOneAndDelete({ mobile: req.params.mobile });
-        if (!user) {
-            return res.status(404).json({ error: "User Not Found" });
-        }
-        res.json({ message: "User Deleted Successfully" });
-    } catch (error) {
-        res.status(500).json({ error: "Server Error" });
-    }
-});
-
-
-// ✅ Add New Data to JSON
-app.post('/api/data', (req, res) => {
-    const data = readJsonFile();
-    const newData = req.body;
-    data.push(newData);
-    writeJsonFile(data);
-    res.status(201).json({ message: "Data added successfully", data: newData });
-});
-
-// ✅ Update Data in JSON
-app.put('/api/data/:id', (req, res) => {
-    let data = readJsonFile();
-    const { id } = req.params;
-    const updatedData = req.body;
-    data = data.map(item => item.id === id ? { ...item, ...updatedData } : item);
-    writeJsonFile(data);
-    res.json({ message: "Data updated successfully" });
-});
 // ✅ Mount Routes
 app.use("/api", userRoutes);
 app.use("/api", userDeleteRoutes);
